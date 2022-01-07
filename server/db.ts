@@ -1,11 +1,9 @@
 import * as admin from "firebase-admin";
+require("dotenv").config();
 
+const service = JSON.parse(process.env.FIREBASE_CONFIG);
 admin.initializeApp({
-  credential: admin.credential.cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  }),
+  credential: admin.credential.cert(service),
   databaseURL: "https://apx-dwf-m6-a0ea8-default-rtdb.firebaseio.com",
 });
 

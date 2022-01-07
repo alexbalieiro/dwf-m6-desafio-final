@@ -2,4 +2,6 @@ node_modules
 .parcel-cache
 dist
 server/index.js
+server/db.js
+server/dev.ts
 .env
