@@ -8,8 +8,6 @@ import * as cors from "cors";
   app.use(express.json());
   app.use(cors());
 
-  console.log(process.env.FIREBASE_PROJECT_ID);
-
   const userCollection = firestore.collection("users");
 
   app.post("/signup", function (req, res) {
