@@ -1,0 +1,23 @@
+{
+  "name": "dwf-m6-desafio-final",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "client/index.html",
+  "scripts": {
+    "dev:front": "parcel",
+    "build:front": "parcel build",
+    "dev:back": "nodemon --watch './server/index.ts' --exec 'ts-node ./server/index.ts'",
+    "build:api": "tsc",
+    "build": "yarn build:front && yarn build:api",
+    "start": "node ./server/index.js"
+  },
+  "devDependencies": {
+    "parcel": "^2.1.1"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.8",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.4"
+  }
+}
