@@ -53,7 +53,7 @@ customElements.define(
     `;
       style.innerHTML = `
       .toshare-page {
-        padding: 140px 26px 0px 27px;
+        padding: 100px 26px 0px 27px;
         margin: 0 auto;
         max-width: 375px;
         display: flex;

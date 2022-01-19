@@ -103,7 +103,7 @@ customElements.define(
       .container-hands{
           display:flex;
           justify-content: space-between;
-          height: 255px;
+          height: 280px;
           align-items: flex-end;
       }
       @media (min-width: 951px) {

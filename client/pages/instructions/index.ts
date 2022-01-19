@@ -79,7 +79,7 @@ customElements.define(
         max-width: 322px;
         display: flex;
         flex-direction: column;
-        gap: 7px;
+        gap: 15px;
       }
       .container{
         display:flex;
