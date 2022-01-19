@@ -1,4 +1,5 @@
 import { Router } from "@vaadin/router";
+const API_BASE_URL = process.env.API_BASE_URL;
 customElements.define(
   "welcome-page",
   class extends HTMLElement {
@@ -20,6 +21,7 @@ customElements.define(
 
     connectedCallback() {
       this.render();
+      console.log(API_BASE_URL);
     }
     render() {
       const div = document.createElement("div");
