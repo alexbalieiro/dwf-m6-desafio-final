@@ -37,12 +37,12 @@ customElements.define(
     `;
       style.innerHTML = `
       .getintoroom-page {
-        padding: 58px 26px 0px 27px;
+        padding: 20px 26px 0px 27px;
         margin: 0 auto;
         max-width: 322px;
         display: flex;
         flex-direction: column;
-        gap: 35px;
+        gap: 31px;
       }
       .container{
         display:flex;

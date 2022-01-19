@@ -30,7 +30,7 @@ customElements.define(
 
       style.innerHTML = `
       .fullroom-page {
-        padding: 62px 26px 0px 27px;
+        padding: 20px 26px 0px 27px;
         margin: 0 auto;
         max-width: 322px;
         display: flex;

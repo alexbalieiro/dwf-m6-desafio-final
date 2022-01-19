@@ -3,10 +3,8 @@ import { Router } from "@vaadin/router";
 customElements.define(
   "play-page",
   class extends HTMLElement {
-    // shadow: ShadowRoot;
     constructor() {
       super();
-      // this.shadow = this.attachShadow({ mode: "open" });
     }
     connectedCallback() {
       this.render();
@@ -18,7 +16,7 @@ customElements.define(
         hand.addEventListener("change", (e: any) => {
           const jugada = e.detail.jugada;
           hand.style.alignSelf = "center";
-          state.setMove(jugada);
+          state.setChoice(jugada);
         });
       }
       this.contador(counter, div);
@@ -59,7 +57,14 @@ customElements.define(
           justify-content: center;
           align-items: center;
           height: 100vh;
-          gap: 130px;
+          gap: ${
+            (result.myPlay == "piedra" && result.opponent == "piedra") ||
+            (result.myPlay == "tijera" && result.opponent == "tijera") ||
+            (result.myPlay == "piedra" && result.opponent == "tijera") ||
+            (result.myPlay == "tijera" && result.opponent == "piedra")
+              ? "130px;"
+              : "50px;"
+          }
           padding: 0px !important;
         }
         .rotar{
@@ -98,7 +103,7 @@ customElements.define(
       .container-hands{
           display:flex;
           justify-content: space-between;
-          height: 310px;
+          height: 255px;
           align-items: flex-end;
       }
       @media (min-width: 951px) {

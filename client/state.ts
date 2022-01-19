@@ -24,7 +24,6 @@ const state = {
     history: [],
   },
   listeners: [],
-  init() {},
   listenRoom() {
     const cs = this.getState();
     const rtdbId = cs.rtdbId;
@@ -101,11 +100,6 @@ const state = {
   setRoomId(roomId) {
     const cs = this.getState();
     cs.roomId = roomId;
-    this.setState(cs);
-  },
-  setIngreso(ingreso: string) {
-    const cs = this.getState();
-    cs.ingresoOpponent = ingreso;
     this.setState(cs);
   },
   getRtdbId(callback) {
@@ -206,8 +200,10 @@ const state = {
       console.error("faltan datos");
     }
   },
-  setChoice(choice: string, callback?) {
+  setChoice(choice: Jugada) {
     const cs = this.getState();
+    cs.currentGame.myPlay = choice;
+    this.setState(cs);
     const userId = cs.userId;
     const rtdbId = cs.rtdbId;
     if (userId && rtdbId) {
@@ -226,22 +222,6 @@ const state = {
       console.error("faltan datos");
     }
   },
-  getCurrentGame() {
-    const cs = this.getState();
-    const rtdbId = cs.rtdbId;
-    fetch(API_BASE_URL + "/currentGame/" + rtdbId, {
-      method: "get",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        this.addHistory(data);
-      });
-  },
   addHistory() {
     const cs = this.getState();
     const roomId = cs.roomId;
@@ -256,7 +236,6 @@ const state = {
       };
       newArray.push(game);
     }
-
     fetch(API_BASE_URL + "/history/" + roomId, {
       method: "post",
       headers: {
@@ -341,28 +320,6 @@ const state = {
     const cs = this.getState();
     cs.currentGame.myPlay = "none";
     this.setChoice(cs.currentGame.myPlay);
-  },
-  setMove(choice: Jugada) {
-    const cs = this.getState();
-    cs.currentGame.myPlay = choice;
-    this.setState(cs);
-    const userId = cs.userId;
-    const rtdbId = cs.rtdbId;
-    if (userId && rtdbId) {
-      fetch(API_BASE_URL + "/choice/?rtdbId=" + rtdbId + "&userId=" + userId, {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          choice,
-        }),
-      }).then((res) => {
-        return res.json();
-      });
-    } else {
-      console.error("faltan datos");
-    }
   },
   pushToHistory(play: Game) {
     this.data.history.push(play);

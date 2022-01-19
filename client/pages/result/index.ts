@@ -56,8 +56,8 @@ customElements.define(
         flex-direction: column;
         margin: 0 auto;
         max-width: 360px;
-        padding-top: 25px;
-        gap:20px;
+        padding-top: 10px;
+        gap:10px;
       }
       @media (min-width: 951px) {
         .container{

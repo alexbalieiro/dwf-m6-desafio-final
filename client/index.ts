@@ -1,5 +1,3 @@
-import { state } from "./state";
-import "./components/header";
 import "./components/text";
 import "./components/text-box";
 import "./components/button";

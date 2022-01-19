@@ -3,7 +3,6 @@ import * as path from "path";
 import { firestore, rtdb } from "./db";
 import { nanoid } from "nanoid";
 import * as cors from "cors";
-import { error } from "console";
 (function () {
   const port = process.env.PORT || 3000;
   const app = express();
@@ -102,16 +101,6 @@ import { error } from "console";
         }
       });
   });
-  app.get("/history/:roomId", (req, res) => {
-    const { roomId } = req.params;
-    roomCollection
-      .doc(roomId)
-      .get()
-      .then((snap) => {
-        const data = snap.data();
-        res.json(data.history);
-      });
-  });
   app.post("/getinto", (req, res) => {
     const { name } = req.body;
     const { userId } = req.query;
@@ -132,6 +121,16 @@ import { error } from "console";
             online,
           });
         });
+      });
+  });
+  app.get("/history/:roomId", (req, res) => {
+    const { roomId } = req.params;
+    roomCollection
+      .doc(roomId)
+      .get()
+      .then((snap) => {
+        const data = snap.data();
+        res.json(data.history);
       });
   });
   app.post("/history/:roomId", function (req, res) {

@@ -23,11 +23,9 @@ customElements.define(
         ) {
           state.getHistory(() => {
             Router.go("/instructions");
-            console.log("obtuve el history");
           });
         } else {
           this.roomId = cs.roomId;
-          //  Router.go("/toshare");
           this.render();
         }
       });
@@ -66,7 +64,7 @@ customElements.define(
         display:flex;
         justify-content: space-around;
         align-items: flex-end;
-        margin-top: 127px;
+        margin-top: 77px;
       }
       .codigo{
         font-weight: 700;
